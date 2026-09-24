@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Vaishu 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at top,#ff9acb,#8e44ad 45%,#1b1464);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Background */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle,#ffffff22 1px,transparent 1px);
+  background-size:35px 35px;
+  animation:stars 10s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes stars{
+  from{transform:translateY(0)}
+  to{transform:translateY(35px)}
+}
+
+.container{
+  width:92%;
+  max-width:800px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+section{
+  margin:25px 0;
+  padding:30px 20px;
+  text-align:center;
+  border-radius:30px;
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter:blur(12px);
+  box-shadow:0 15px 45px #0004;
+}
+
+/* Hero */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.cake{
+  font-size:90px;
+  animation:cake 1.5s infinite;
+}
+
+@keyframes cake{
+  50%{
+    transform:translateY(-15px) rotate(3deg);
+  }
+}
+
+h1{
+  font-size:clamp(2.8rem,12vw,6rem);
+  line-height:1;
+  text-shadow:0 8px 25px #0005;
+  margin:20px 0;
+}
+
+.name{
+  color:#ffe66d;
+}
+
+.subtitle{
+  font-size:1.2rem;
+  line-height:1.7;
+  max-width:600px;
+}
+
+button{
+  border:0;
+  padding:14px 24px;
+  margin:8px;
+  border-radius:50px;
+  background:white;
+  color:#8e44ad;
+  font-weight:bold;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow:0 8px 20px #0004;
+  transition:.25s;
+}
+
+button:hover{
+  transform:scale(1.07);
+}
+
+button:active{
+  transform:scale(.95);
+}
+
+/* Wishes */
+
+.wishes{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:20px;
+}
+
+.wish{
+  padding:20px;
+  border-radius:20px;
+  background:#ffffff18;
+  font-size:1rem;
+  line-height:1.5;
+}
+
+/* Gift */
+
+.gift{
+  font-size:100px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.gift:hover{
+  transform:scale(1.15) rotate(5deg);
+}
+
+.gift-message{
+  display:none;
+  animation:appear .6s;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* Balloon game */
+
+.game-area{
+  height:360px;
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  background:#0002;
+  border:2px dashed #ffffff55;
+  margin-top:15px;
+}
+
+.balloon{
+  position:absolute;
+  width:55px;
+  height:70px;
+  border-radius:50% 50% 45% 45%;
+  cursor:pointer;
+  box-shadow:inset -8px -10px 15px #0003;
+  animation:fly linear forwards;
+}
+
+.balloon::after{
+  content:"";
+  position:absolute;
+  width:2px;
+  height:40px;
+  background:white;
+  left:50%;
+  top:68px;
+  opacity:.7;
+}
+
+@keyframes fly{
+  from{
+    transform:translateY(400px);
+  }
+  to{
+    transform:translateY(-100px);
+  }
+}
+
+.pop{
+  animation:pop .2s forwards!important;
+}
+
+@keyframes pop{
+  to{
+    transform:scale(1.6);
+    opacity:0;
+  }
+}
+
+/* Quiz */
+
+.quiz-options{
+  display:flex;
+  flex-direction:column;
+  max-width:400px;
+  margin:auto;
+}
+
+.quiz-options button{
+  width:100%;
+}
+
+#quizResult{
+  min-height:30px;
+  margin:10px;
+  font-weight:bold;
+}
+
+/* Stars game */
+
+.star-game{
+  height:300px;
+  position:relative;
+  overflow:hidden;
+  border-radius:20px;
+  background:#0002;
+}
+
+.star{
+  position:absolute;
+  font-size:32px;
+  cursor:pointer;
+  animation:starAppear .4s;
+}
+
+@keyframes starAppear{
+  from{
+    transform:scale(0);
+  }
+  to{
+    transform:scale(1);
+  }
+}
+
+/* Final */
+
+.final{
+  margin-bottom:50px;
+}
+
+.big-heart{
+  font-size:90px;
+  animation:heartbeat 1s infinite;
+}
+
+@keyframes heartbeat{
+  50%{
+    transform:scale(1.2);
+  }
+}
+
+/* Confetti */
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:9px;
+  height:16px;
+  z-index:50;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+/* Hearts */
+
+.heart{
+  position:fixed;
+  bottom:-30px;
+  z-index:1;
+  pointer-events:none;
+  animation:heartFloat linear forwards;
+}
+
+@keyframes heartFloat{
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+  section{
+    padding:25px 15px;
+  }
+
+  .cake{
+    font-size:65px;
+  }
+
+  .wishes{
+    grid-template-columns:1fr;
+  }
+
+  .game-area{
+    height:330px;
+  }
+
+  h1{
+    font-size:3rem;
+  }
+
+  button{
+    width:90%;
+    max-width:300px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="cake">🎂</div>
+
+<h1>
+Happy Birthday<br>
+<span class="name">Vaishu! 💖</span>
+</h1>
+
+<p class="subtitle">
+Today isn't just another day... ✨<br>
+It's the day someone very special came into this world. 🥰
+</p>
+
+<br>
+
+<button onclick="celebrate()">
+🎉 Start the Celebration
+</button>
+
+<button onclick="scrollToGames()">
+🎮 Play Games
+</button>
+
+</section>
+
+
+<!-- WISHES -->
+
+<section>
+
+<h2>💌 Birthday Wishes</h2>
+
+<div class="wishes">
+
+<div class="wish">
+🌸 May your life always be filled with happiness,
+love and beautiful memories.
+</div>
+
+<div class="wish">
+✨ May every dream you have slowly become
+a beautiful reality.
+</div>
+
+<div class="wish">
+😂 May your days have unlimited laughter
+and crazy adventures.
+</div>
+
+<div class="wish">
+💖 May you always be surrounded by people
+who genuinely care about you.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GIFT -->
+
+<section>
+
+<h2>🎁 A Little Surprise</h2>
+
+<p>Tap the gift to open your birthday surprise!</p>
+
+<div class="gift" onclick="openGift()">
+🎁
+</div>
+
+<div class="gift-message" id="giftMessage">
+
+<h2>💖 Surprise, Vaishu! 💖</h2>
+
+<p>
+You deserve all the happiness in the world! 🌎✨
+</p>
+
+<br>
+
+<p>
+Keep smiling, keep shining and never stop
+being your wonderful self. 🥰
+</p>
+
+</div>
+
+</section>
+
+
+<!-- BALLOON GAME -->
+
+<section id="games">
+
+<h2>🎈 Balloon Pop Challenge</h2>
+
+<p>
+Pop as many balloons as possible!
+</p>
+
+<h3>
+Score: <span id="balloonScore">0</span>
+</h3>
+
+<button onclick="startBalloonGame()">
+🎈 Start Balloon Game
+</button>
+
+<div class="game-area" id="balloonArea"></div>
+
+<p id="balloonResult"></p>
+
+</section>
+
+
+<!-- STAR GAME -->
+
+<section>
+
+<h2>⭐ Catch the Magic Stars</h2>
+
+<p>
+Tap the stars before they disappear!
+</p>
+
+<h3>
+Stars: <span id="starScore">0</span>
+</h3>
+
+<button onclick="startStarGame()">
+⭐ Start Star Game
+</button>
+
+<div class="star-game" id="starArea"></div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section>
+
+<h2>🧠 Birthday Quiz</h2>
+
+<p id="question">
+Who deserves the biggest birthday celebration today?
+</p>
+
+<div class="quiz-options">
+
+<button onclick="answer('wrong')">
+A. Nobody 😴
+</button>
+
+<button onclick="answer('correct')">
+B. Vaishu! 🎂
+</button>
+
+<button onclick="answer('wrong')">
+C. My WiFi 📶
+</button>
+
+</div>
+
+<p id="quizResult"></p>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+<div class="big-heart">💖</div>
+
+<h2>One Last Birthday Wish</h2>
+
+<br>
+
+<p>
+Dear Vaishu,
+</p>
+
+<br>
+
+<p style="line-height:1.8">
+
+May this new chapter of your life bring
+you countless reasons to smile. 🌸
+
+May you find happiness in little things,
+strength during difficult days,
+and beautiful people who make life special. ✨
+
+Never forget how amazing you are. 💕
+
+</p>
+
+<br>
+
+<h2>
+Happy Birthday, Vaishu! 🎂🎉
+</h2>
+
+<br>
+
+<button onclick="celebrate()">
+🎊 More Confetti!
+</button>
+
+</section>
+
+</div>
+
+
+<script>
+
+const colors=[
+"#ff4757",
+"#ffa502",
+"#2ed573",
+"#1e90ff",
+"#a55eea",
+"#ff6b81",
+"#ffe66d",
+"#ffffff"
+];
+
+
+/* CONFETTI */
+
+function createConfetti(){
+
+const c=document.createElement("div");
+
+c.className="confetti";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+c.style.animationDuration=
+(Math.random()*3+3)+"s";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},7000);
+
+}
+
+
+function celebrate(){
+
+for(let i=0;i<150;i++){
+
+setTimeout(createConfetti,i*8);
+
+}
+
+for(let i=0;i<30;i++){
+
+setTimeout(createHeart,i*70);
+
+}
+
+}
+
+
+/* CONTINUOUS CONFETTI */
+
+setInterval(createConfetti,500);
+
+
+/* HEARTS */
+
+function createHeart(){
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML=
+["❤️","💖","💕","💗","💝"][Math.floor(Math.random()*5)];
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=
+(Math.random()*20+15)+"px";
+
+h.style.animationDuration=
+(Math.random()*4+4)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},8000);
+
+}
+
+setInterval(createHeart,1800);
+
+
+/* GIFT */
+
+function openGift(){
+
+const message=document.getElementById("giftMessage");
+
+message.style.display="block";
+
+celebrate();
+
+}
+
+
+/* SCROLL */
+
+function scrollToGames(){
+
+document.getElementById("games")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* BALLOON GAME */
+
+let balloonScore=0;
+let balloonGame=false;
+let balloonInterval;
+
+function startBalloonGame(){
+
+balloonScore=0;
+
+balloonGame=true;
+
+document.getElementById("balloonScore")
+.textContent=0;
+
+document.getElementById("balloonArea")
+.innerHTML="";
+
+clearInterval(balloonInterval);
+
+balloonInterval=setInterval(createBalloon,600);
+
+setTimeout(()=>{
+
+balloonGame=false;
+
+clearInterval(balloonInterval);
+
+document.getElementById("balloonResult")
+.textContent=
+"🎉 Game Over! You scored "+
+balloonScore+
+" balloons!";
+
+celebrate();
+
+},20000);
+
+}
+
+
+function createBalloon(){
+
+if(!balloonGame)return;
+
+const area=document.getElementById("balloonArea");
+
+const b=document.createElement("div");
+
+b.className="balloon";
+
+b.style.background=
+colors[Math.floor(Math.random()*colors.length)];
+
+b.style.left=
+Math.random()*88+"%";
+
+b.style.animationDuration=
+(Math.random()*2+3)+"s";
+
+b.onclick=()=>{
+
+if(b.classList.contains("pop"))return;
+
+b.classList.add("pop");
+
+balloonScore++;
+
+document.getElementById("balloonScore")
+.textContent=balloonScore;
+
+for(let i=0;i<8;i++){
+
+setTimeout(createConfetti,i*20);
+
+}
+
+setTimeout(()=>{
+b.remove();
+},200);
+
+};
+
+area.appendChild(b);
+
+setTimeout(()=>{
+b.remove();
+},5000);
+
+}
+
+
+/* STAR GAME */
+
+let starScore=0;
+let starInterval;
+
+function startStarGame(){
+
+starScore=0;
+
+document.getElementById("starScore")
+.textContent=0;
+
+const area=document.getElementById("starArea");
+
+area.innerHTML="";
+
+clearInterval(starInterval);
+
+starInterval=setInterval(createStar,700);
+
+setTimeout(()=>{
+
+clearInterval(starInterval);
+
+celebrate();
+
+},15000);
+
+}
+
+
+function createStar(){
+
+const area=document.getElementById("starArea");
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.textContent="⭐";
+
+star.style.left=
+Math.random()*90+"%";
+
+star.style.top=
+Math.random()*85+"%";
+
+star.onclick=()=>{
+
+starScore++;
+
+document.getElementById("starScore")
+.textContent=starScore;
+
+star.remove();
+
+createConfetti();
+
+};
+
+area.appendChild(star);
+
+setTimeout(()=>{
+
+star.remove();
+
+},1200);
+
+}
+
+
+/* QUIZ */
+
+function answer(type){
+
+const result=document.getElementById("quizResult");
+
+if(type==="correct"){
+
+result.textContent=
+"🎉 Correct! Of course it's Vaishu! 💖";
+
+celebrate();
+
+}else{
+
+result.textContent=
+"😂 Nope! Try again!";
+
+}
+
+}
+
+
+/* START */
+
+setTimeout(()=>{
+celebrate();
+},700);
+
+</script>
+
+</body>
+</html>
